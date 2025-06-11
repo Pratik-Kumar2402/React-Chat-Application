@@ -2,4 +2,174 @@
     flex: 2;
     border-left: 1px solid #5f5f5f;
     border-right: 1px solid #5f5f5f;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .top {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #5f5f5f;
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .texts {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                span {
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #a1a1a1;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .icons {
+            display: flex;
+            gap: 20px;
+
+            img {
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .center {
+        padding: 20px;
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .message {
+            max-width: 70%;
+            display: flex;
+            gap: 20px;
+
+            &.owner {
+                align-self: flex-end;
+
+                .texts {
+
+                    p {
+                        background-color: #4a90e2;
+                        color: white;
+
+                    }
+                }
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .texts {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                img {
+                    width: 100%;
+                    height: 300px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+
+                p {
+                    padding: 20px;
+                    border-radius: 10px;
+                    background-color: #3f3f3f79;
+                    color: white;
+                    font-size: 16px;
+                    margin: 0;
+                }
+
+                span {
+                    font-size: 12px;
+                    color: #a1a1a1;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    .bottom {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-top: 1px solid #5f5f5f;
+        margin-top: auto;
+
+        .icons {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #3f3f3f79;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .emoji {
+            position: relative;
+
+            .picker {
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+            }
+        }
+
+        .send-button {
+            border: none;
+            background-color: #4a90e2;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+
+        }
+    }
 }
