@@ -9,11 +9,11 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "react-chat-cd34b.firebaseapp.com",
-  projectId: "react-chat-cd34b",
-  storageBucket: "react-chat-cd34b.firebasestorage.app",
-  messagingSenderId: "265349817832",
-  appId: "1:265349817832:web:560fb443fe6f8c0d31f05d"
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGE_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

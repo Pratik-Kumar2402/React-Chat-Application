@@ -116,7 +116,7 @@ export default function Chat() {
         {chatBox?.messages?.map((message) => (
           <div className={message.senderId === currentUser?.id ? 'message owner' : 'message'} key={message?.createAt}>
             <div className="texts">
-              {message.img && <img src={message.img} alt="" />}
+              {/* {message.img && <img src={message.img} alt="" />} */}
               <p>{message.text}</p>
               {/* <span>{message.createdAt}</span> */}
             </div>
