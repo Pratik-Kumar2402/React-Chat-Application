@@ -1,11 +1,14 @@
+import useUserStore from '../../../lib/userStore';
 import './userInfo.css';
 
 export default function UserInfo() {
+  const { currentUser } = useUserStore();
+
   return (
     <div className='user-info'>
       <div className="user">
-        <img src="/user.png" alt="" />
-        <h3>John Doe</h3>
+        <img src={currentUser.avatar || "/user.png"} alt="" />
+        <h3>{currentUser.username}</h3>
       </div>
       <div className="icons">
         <img src="/menu.png" alt="" />

@@ -81,7 +81,7 @@ export default function Login() {
                 throw new Error('All fields are required');
             }
 
-            const res = await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login successful!');
         } catch (error) {
             toast.error(error.message);
@@ -113,9 +113,9 @@ export default function Login() {
                         Upload Profile Picture
                     </label>
                     <input type="file" name="file" id="file" hidden onChange={handleAvatarChange} />
-                    <input type="text" name="username" id="username" placeholder="Username" />
-                    <input type="email" name="email" id="email" placeholder='Email' />
-                    <input type="password" name="password" id="password" placeholder='Password' />
+                    <input type="text" name="regUsername" id="regUsername" placeholder="Username" />
+                    <input type="email" name="regEmail" id="regEmail" placeholder='Email' />
+                    <input type="password" name="regPassword" id="regPassword" placeholder='Password' />
                     <button disabled={loading} type="submit">{loading ? 'Signing Up...' : 'Sign Up'}</button>
                 </form>
             </div>

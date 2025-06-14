@@ -150,6 +150,10 @@
             font-size: 16px;
             outline: none;
             font-size: 16px;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
         }
 
         .emoji {
@@ -170,6 +174,10 @@
             color: white;
             cursor: pointer;
 
+            &:disabled {
+                background-color: #5f5f5f;
+                cursor: not-allowed;
+            }
         }
     }
 }
