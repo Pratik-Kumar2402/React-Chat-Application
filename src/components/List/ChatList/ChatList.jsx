@@ -38,7 +38,7 @@ export default function ChatList() {
 
   const handleSelect = async (chat) => {
     const userChats = chats.map((item) => {
-      const { user, ...rest } = item;
+      const { user: _unused, ...rest } = item;
 
       return rest;
     })
@@ -67,7 +67,7 @@ export default function ChatList() {
           <img src="/search.png" alt="" />
           <input type="text" placeholder='Search...' onChange={(e) => setUserInput(e.target.value)} />
         </div>
-        <img className="add" src={addMore ? "/minus.png" : "/plus.png"} alt="" onClick={() => setAddMore((prev) => !prev)} />
+        <img className="add" src={addMore ? "/minus.png" : "/plus.png"} alt="" onClick={() => setAddMore(!addMore)} />
       </div>
       {filteredChats.map((chat) => (
         <div className="item" key={chat.chatId} onClick={() => handleSelect(chat)} style={{ backgroundColor: chat?.isSeen ? 'transparent' : '#5183fe', }}>

@@ -1,1 +1,1 @@
-# React + Vite
+# React Chat Application

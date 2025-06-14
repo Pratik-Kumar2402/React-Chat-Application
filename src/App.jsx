@@ -36,7 +36,7 @@ function App() {
           <>
             <List />
             {chatId && <Chat />}
-            {chatId && <Detail />}
+            {<Detail />}
           </>
         ) : (
           <Login />

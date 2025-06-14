@@ -109,7 +109,6 @@ export default function Chat() {
         </div>
         <div className="icons">
           <img src="/phone.png" alt="" />
-          <img src="/video.png" alt="" />
           <img src="/info.png" alt="" />
         </div>
       </div>
@@ -138,8 +137,6 @@ export default function Chat() {
             <img src="/image.png" alt="" />
           </label>
           <input type="file" id='file' hidden onChange={handleImage} />
-          <img src="/camera.png" alt="" />
-          <img src="/mic.png" alt="" />
         </div>
         <input type="text" value={text} placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? `You can't send a message` : 'Type a message...'} onChange={(e) => setText(e.target.value)} disabled={isCurrentUserBlocked || isReceiverBlocked} />
         <div className="emoji">
