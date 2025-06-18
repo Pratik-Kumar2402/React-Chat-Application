@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    /* border-bottom: 1px solid #e0e0e0; */
 
     .user {
         display: flex;
@@ -27,6 +26,24 @@
             width: 20px;
             height: 20px;
             cursor: pointer;
+        }
+    }
+}
+
+button {
+    &.logout-button {
+        padding: 10px 20px;
+        margin: 0 auto 10px;
+        width: 95%;
+        background-color: #c30c0cda;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: small;
+
+        &:hover {
+            background-color: #a20a0ad3;
         }
     }
 }

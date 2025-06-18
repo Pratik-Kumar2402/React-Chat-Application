@@ -17,7 +17,7 @@ export default function ChatList() {
   console.log(chatId);
 
   useEffect(() => {
-    const unSub = onSnapshot(doc(db, "userChats", currentUser.id), async (res) => {
+    const unSub = onSnapshot(doc(db, "userChats", currentUser.uid), async (res) => {
       const items = res.data().chats;
 
       const promises = items.map(async (item) => {
@@ -34,7 +34,7 @@ export default function ChatList() {
     return () => {
       unSub();
     };
-  }, [currentUser.id]);
+  }, [currentUser.uid]);
 
   const handleSelect = async (chat) => {
     const userChats = chats.map((item) => {
@@ -47,7 +47,7 @@ export default function ChatList() {
 
     userChats[chatIndex].isSeen = true;
 
-    const userChatsRef = doc(db, 'userChats', currentUser.id);
+    const userChatsRef = doc(db, 'userChats', currentUser.uid);
     try {
       await updateDoc(userChatsRef, {
         chats: userChats,
@@ -58,7 +58,7 @@ export default function ChatList() {
     }
   }
 
-  const filteredChats = chats.filter(c => c.user.username.toLowerCase().includes(userInput.toLowerCase()))
+  const filteredChats = chats.filter(c => c.user.email.toLowerCase().includes(userInput.toLowerCase()))
 
   return (
     <div className='chat-list'>
@@ -71,9 +71,9 @@ export default function ChatList() {
       </div>
       {filteredChats.map((chat) => (
         <div className="item" key={chat.chatId} onClick={() => handleSelect(chat)} style={{ backgroundColor: chat?.isSeen ? 'transparent' : '#5183fe', }}>
-          <img src={chat.user.blocked.includes(currentUser.id) ? '/user.png' : (chat.user.avatar || "/user.png")} alt="" />
+          <img src={chat.user.blocked.includes(currentUser.uid) ? '/user.png' : (chat.user.avatar || "/user.png")} alt="" />
           <div className="texts">
-            <span>{chat.user.blocked.includes(currentUser.id) ? 'User' : chat.user.username}</span>
+            <span>{chat.user.blocked.includes(currentUser.uid) ? 'User' : chat.user.email}</span>
             <p>{chat.lastMessage}</p>
           </div>
         </div>

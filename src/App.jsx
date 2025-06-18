@@ -1,13 +1,12 @@
 import './App.css'
-import List from './components/List/List'
-import useChatStore from './lib/chatStore';
-import Chat from './components/Chat/Chat'
-import Detail from './components/Detail/Detail'
-import Login from './components/Login/Login';
-import Notification from './components/Notification/Notification';
 import { useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import List from './components/List/List'
+import Chat from './components/Chat/Chat'
+import Register from './components/Register/Register';
+import Notification from './components/Notification/Notification';
 import { auth } from './lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import useChatStore from './lib/chatStore';
 import useUserStore from './lib/userStore';
 
 function App() {
@@ -16,11 +15,9 @@ function App() {
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (currentUser) => {
-      // User is signed in, you can set user state or perform actions
       fetchUserInfo(currentUser?.uid);
     });
     return () => {
-      // Cleanup the subscription when the component unmounts
       unSub();
     };
   }, [fetchUserInfo]);
@@ -32,15 +29,14 @@ function App() {
   return (
     <>
       <div className='container'>
-        {currentUser ? (
+        {currentUser ?
           <>
             <List />
             {chatId && <Chat />}
-            {<Detail />}
           </>
-        ) : (
-          <Login />
-        )}
+          :
+          (<Register />)
+        }
         <Notification />
       </div>
     </>
