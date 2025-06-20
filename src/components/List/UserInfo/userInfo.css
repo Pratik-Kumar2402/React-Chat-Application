@@ -31,7 +31,7 @@
 }
 
 button {
-    &.logout-button {
+    &.logout-button, &.block-button {
         padding: 10px 20px;
         margin: 0 auto 10px;
         width: 95%;
@@ -44,6 +44,14 @@ button {
 
         &:hover {
             background-color: #a20a0ad3;
+        }
+    }
+
+    &.block-button {
+        background-color: #1a73e8;
+
+        &:hover {
+            background-color: #0a35a2e0;
         }
     }
 }

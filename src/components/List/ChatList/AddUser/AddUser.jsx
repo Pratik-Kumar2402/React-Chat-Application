@@ -29,8 +29,8 @@ export default function AddUser() {
             if (!userQuery.empty) {
                 setUser(userQuery.docs[0].data());
             }
-        } catch (error) {
-            console.error("Error searching for user:", error);
+        } catch (err) {
+            console.error("Error searching for user:", err);
         }
     }
 
@@ -41,6 +41,11 @@ export default function AddUser() {
         const userChatRef = collection(db, "userChats");
 
         if (user) {
+            if(currentUser.uid === user.uid) {
+                toast.warning("You can't add yourself");
+                return;
+            }
+
             const userChatsRef = doc(userChatRef, currentUser.uid);
             const userSnapshot = await getDoc(userChatsRef);
 
@@ -85,8 +90,8 @@ export default function AddUser() {
             });
 
             setAdded(true);
-        } catch (error) {
-            console.error("Error adding user:", error);
+        } catch (err) {
+            console.error("Error adding user:", err);
         }
     }
 
@@ -95,7 +100,7 @@ export default function AddUser() {
     return (
         <div className='addUser'>
             <form onSubmit={handleSearch}>
-                <input onKeyDown={(event) => handleKey(event)} type='text' name='addEmail' placeholder='Enter email' />
+                <input onKeyDown={(event) => handleKey(event)} type='text' name='addEmail' id='addEmail' placeholder='Enter email' />
                 <button type='submit'>Search User</button>
             </form>
             {user && (

@@ -14,8 +14,6 @@ export default function ChatList() {
   const { currentUser } = useUserStore();
   const { chatId, changeChat } = useChatStore();
 
-  console.log(chatId);
-
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "userChats", currentUser.uid), async (res) => {
       const items = res.data().chats;
@@ -53,8 +51,8 @@ export default function ChatList() {
         chats: userChats,
       })
       changeChat(chat.chatId, chat.user);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -70,8 +68,8 @@ export default function ChatList() {
         <img className="add" src={addMore ? "/minus.png" : "/plus.png"} alt="" onClick={() => setAddMore(!addMore)} />
       </div>
       {filteredChats.map((chat) => (
-        <div className="item" key={chat.chatId} onClick={() => handleSelect(chat)} style={{ backgroundColor: chat?.isSeen ? 'transparent' : '#5183fe', }}>
-          <img src={chat.user.blocked.includes(currentUser.uid) ? '/user.png' : (chat.user.avatar || "/user.png")} alt="" />
+        <div className="item" key={chat.chatId} onClick={() => handleSelect(chat)} style={{ backgroundColor: chat?.isSeen ? 'transparent' : '#5183fe' }}>
+          <img src="/user.png" alt="" />
           <div className="texts">
             <span>{chat.user.blocked.includes(currentUser.uid) ? 'User' : chat.user.email}</span>
             <p>{chat.lastMessage}</p>

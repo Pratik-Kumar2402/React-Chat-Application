@@ -29,9 +29,14 @@ export default function Chat() {
       unSub();
     };
   }, [chatId]);
-  console.log(chatBox)
 
-  const handleSend = async () => {
+  const handleKey = (event) => {
+    if (event.key === "Enter") {
+      handleSend(event);
+    }
+  }
+
+  const handleSend = async (e) => {
     if (text === '') return;
 
     try {
@@ -65,8 +70,8 @@ export default function Chat() {
         }
       });
 
-    } catch (error) {
-      console.error("Error sending message:", error);
+    } catch (err) {
+      console.error("Error sending message:", err);
     }
 
     setText('');
@@ -89,7 +94,7 @@ export default function Chat() {
       </div>
       <div className="center">
         {chatBox?.messages?.map((message) => (
-          <div className={message.senderId === currentUser?.uid ? 'message owner' : 'message'} key={message?.createAt}>
+          <div className={message.senderId === currentUser?.uid ? 'message owner' : 'message'} key={message?.createdAt}>
             <div className="texts">
               <p>{message.text}</p>
               <span>
@@ -105,14 +110,14 @@ export default function Chat() {
         <div ref={el => el && el.scrollIntoView({ behavior: 'smooth' })}></div>
       </div>
       <div className="bottom">
-        <input type="text" value={text} placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? `You can't send a message` : 'Type a message...'} onChange={(e) => setText(e.target.value)} disabled={isCurrentUserBlocked || isReceiverBlocked} />
+        <input onKeyDown={handleKey} type="text" name='message' id='message' value={text} placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? `You can't send a message` : 'Type a message...'} onChange={(e) => setText(e.target.value)} disabled={isCurrentUserBlocked || isReceiverBlocked} />
         <div className="emoji">
           <img src="/emoji.png" alt="" onClick={() => setOpen(!open)} />
           <div className="picker">
             <EmojiPicker
               theme='dark'
               onEmojiClick={handleEmojiClick}
-              open={open}
+              open={(isCurrentUserBlocked || isReceiverBlocked) ? '' : open}
             />
           </div>
         </div>

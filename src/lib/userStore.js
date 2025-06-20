@@ -16,8 +16,8 @@ const useUserStore = create((set) => ({
             } else {
                 set({ currentUser: null, isLoading: false });
             }
-        } catch (error) {
-            console.error('Failed to fetch user info:', error);
+        } catch (err) {
+            console.error('Failed to fetch user info:', err);
             return set({ currentUser: null, isLoading: false });
         }
     },

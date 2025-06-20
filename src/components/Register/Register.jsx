@@ -37,8 +37,8 @@ export default function Register() {
             });
 
             toast.success('Registration successful!');
-        } catch (error) {
-            toast.error(error.message);
+        } catch (err) {
+            toast.error(err.message);
             return;
         }
     }
@@ -56,8 +56,8 @@ export default function Register() {
 
             await signInWithEmailAndPassword(auth, email, password);
             toast.success('Login successful!');
-        } catch (error) {
-            toast.error(error.message);
+        } catch (err) {
+            toast.error(err.message);
             return;
         }
     }

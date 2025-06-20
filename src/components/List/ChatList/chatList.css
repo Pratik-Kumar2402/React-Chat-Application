@@ -10,7 +10,7 @@
         align-items: center;
         gap: 10px;
         width: 100%;
-        
+
         .searchBar {
             flex: 1;
             background-color: #1a1a1a;
@@ -18,7 +18,7 @@
             align-items: center;
             padding: 2px;
             border-radius: 5px;
-            
+
             input {
                 flex: 1;
                 border-radius: 5px;
@@ -54,11 +54,6 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-
-        /* not working currently */
-        /* &:hover {
-            background-color: #2a2a2a;
-        } */
 
         img {
             width: 50px;
