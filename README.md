@@ -1,26 +1,29 @@
 # React Chat Application
 
-A modern real-time chat application built with React, Firebase, Zustand, and Vite. Users can register, log in, chat with others, send images, block users, and manage their profile.
+A modern real-time chat application built with React, Firebase, Zustand, and Vite. Users can register, log in, chat with others, block users, and manage their profile.
 
-Features
-User authentication (register & login) with Firebase Auth
-Real-time chat using Firestore
-Image upload and sharing via Firebase Storage
-User blocking/unblocking
-Emoji picker for messages
-Responsive and modern UI
-Toast notifications for feedback
-User search and chat list management
+## Features
 
-Tech Stack
-React
-Firebase (Auth, Firestore, Storage)
-Zustand
-Vite
-React Toastify
-Emoji Picker React
+- User authentication (register & login) with Firebase Auth
+- Real-time chat using Firestore
+- User blocking/unblocking
+- Emoji picker for messages
+- Responsive and modern UI
+- Toast notifications for feedback
+- User search and chat list management
 
-Project Structure
+## Tech Stack
+
+- React
+- Firebase (Auth, Firestore)
+- Zustand
+- Vite
+- React Toastify
+- Emoji Picker React
+
+## Project Structure
+
+```
 public/
   *.png                # Static assets (icons, background)
 src/
@@ -31,61 +34,36 @@ src/
     firebase.js        # Firebase config and exports
     userStore.js       # Zustand store for user state
     chatStore.js       # Zustand store for chat state
-    upload.js          # Image upload helper
 index.css, App.css     # Global and app styles
+```
 
-Getting Started
-Prerequisites
-Node.js (v18+ recommended)
-Firebase project (see below)
+## Getting Started
 
-Setup
+### Prerequisites
 
-Clone the repository:
-git clone <repo-url>
-cd react-chat-application
+- Node.js (v18+ recommended)
+- A Firebase project
 
-Install dependencies:
-npm install
+### Setup Instructions
 
-Configure Firebase:
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd react-chat-application
+   ```
 
-Create a .env file in the root directory.
-Add your Firebase config variables:
-VITE_FIREBASE_API_KEY=your_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
-VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-VITE_FIREBASE_MESSAGE_SENDER_ID=your_messaging_sender_id
-VITE_FIREBASE_APP_ID=your_app_id
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Run the development server:
-npm run dev
+3. **Set up Firebase:**
+   - Go to [Firebase Console](https://console.firebase.google.com/) and create a new project.
+   - In the Firebase project, enable **Authentication** (Email/Password sign-in method).
+  - In **Firestore Database**, make sure you have enabled Firestore in your Firebase project. The following collections are created automatically by the application as you use it:
+    - `users`
+    - `userChats`
+    - `chats`
+  - Go to **Project Settings > General > Your Apps** and register a new web app to get your Firebase config.
 
-Open the app:
-
-Visit http://localhost:5173 in your browser.
-
-Scripts
-npm run dev – Start the development server
-npm run build – Build for production
-npm run preview – Preview the production build
-npm run lint – Run ESLint
-License
-This project is licensed under the GNU GPL v3.
-
-License
-This project is licensed under the GNU GPL v3.
-
-Note: For Firebase setup, ensure you have enabled Email/Password authentication and created the required Firestore collections (users, userChats, chats).5. Open the app:
-
-Visit http://localhost:5173 in your browser.
-Scripts
-npm run dev – Start the development server
-npm run build – Build for production
-npm run preview – Preview the production build
-npm run lint – Run ESLint
-License
-This project is licensed under the GNU GPL v3.
-
-Note: For Firebase setup, ensure you have enabled Email/Password authentication and created the required Firestore collections (users, userChats, chats).
+> **Note:** Profile editing is not included in the current version, but can be added in a later version if needed.
